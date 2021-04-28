@@ -1,9 +1,5 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.config;
 
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.converter.GenderDataReadConverter;
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.converter.GenderDataWriteConverter;
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.converter.MeasurementTypeDataReadConverter;
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.converter.MeasurementTypeDataWriteConverter;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactoryOptions;
@@ -18,9 +14,6 @@ import org.springframework.r2dbc.connection.R2dbcTransactionManager;
 import org.springframework.transaction.ReactiveTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -51,16 +44,6 @@ public class DatabaseConfiguration extends AbstractR2dbcConfiguration {
                             .option(Option.valueOf(key), value));
         }
         return ConnectionFactories.get(builder.build());
-    }
-
-    @Override
-    protected List<Object> getCustomConverters() {
-        List<Object> converterList = new ArrayList<>();
-        converterList.add(new GenderDataReadConverter());
-        converterList.add(new GenderDataWriteConverter());
-        converterList.add(new MeasurementTypeDataReadConverter());
-        converterList.add(new MeasurementTypeDataWriteConverter());
-        return converterList;
     }
 
 

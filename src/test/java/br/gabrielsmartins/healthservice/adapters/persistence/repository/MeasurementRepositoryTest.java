@@ -38,7 +38,7 @@ public class MeasurementRepositoryTest {
         this.personEntity = defaultPersonEntity()
                 .withId(null)
                 .build();
-        this.personRepository.save(personEntity);
+        this.personRepository.save(personEntity).block();
     }
 
     @Test

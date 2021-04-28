@@ -15,6 +15,6 @@ public class MeasurementSupport {
         return Measurement.builder()
                           .withMeasuredAt(LocalDateTime.now())
                           .withType(MeasurementType.HEART_RATE)
-                          .withValue(60);
+                          .withValue(60.00);
     }
 }

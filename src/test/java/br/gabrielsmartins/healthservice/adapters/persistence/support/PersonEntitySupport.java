@@ -17,7 +17,7 @@ public class PersonEntitySupport {
                      .withId(UUID.randomUUID())
                      .withFirstName("Foo")
                      .withLastName("Bar")
-                     .withGender(GenderData.MALE)
+                     .withGender(String.valueOf(GenderData.MALE.getPrefix()))
                      .withDob(LocalDate.now());
     }
 }

@@ -1,6 +1,5 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.entity;
 
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.GenderData;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
@@ -32,6 +31,6 @@ public class PersonEntity implements Serializable {
     private LocalDate dob;
 
     @Column("person_gender")
-    private GenderData gender;
+    private String gender;
 
 }

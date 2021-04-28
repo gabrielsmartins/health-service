@@ -14,6 +14,6 @@ public class Measurement {
     private Person person;
     private MeasurementType type;
     private LocalDateTime measuredAt;
-    private Number value;
+    private Double value;
 
 }

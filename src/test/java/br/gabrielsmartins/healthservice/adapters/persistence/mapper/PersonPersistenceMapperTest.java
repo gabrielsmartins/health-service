@@ -1,5 +1,6 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.mapper;
 
+import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.GenderData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ public class PersonPersistenceMapperTest {
         assertThat(personEntity.getId()).isEqualTo(person.getId());
         assertThat(personEntity.getFirstName()).isEqualTo(person.getFirstName());
         assertThat(personEntity.getLastName()).isEqualTo(person.getLastName());
-        assertThat(personEntity.getGender().getSource()).isEqualTo(person.getGender());
+        assertThat(personEntity.getGender().charAt(0)).isEqualTo(GenderData.fromSource(person.getGender()).getPrefix());
         assertThat(personEntity.getDob()).isEqualTo(person.getDob());
     }
 
@@ -44,7 +45,7 @@ public class PersonPersistenceMapperTest {
         assertThat(person.getId()).isEqualTo(personEntity.getId());
         assertThat(person.getFirstName()).isEqualTo(personEntity.getFirstName());
         assertThat(person.getLastName()).isEqualTo(personEntity.getLastName());
-        assertThat(person.getGender()).isEqualTo(personEntity.getGender().getSource());
+        assertThat(person.getGender()).isEqualTo(GenderData.fromPrefix(personEntity.getGender().charAt(0)).getSource());
         assertThat(person.getDob()).isEqualTo(personEntity.getDob());
     }
 }

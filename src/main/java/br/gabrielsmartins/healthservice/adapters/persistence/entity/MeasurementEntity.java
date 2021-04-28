@@ -1,7 +1,9 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.entity;
 
-import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.MeasurementTypeData;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -25,12 +27,12 @@ public class MeasurementEntity implements Serializable {
     private UUID personId;
 
     @Column("measurement_type_id")
-    private MeasurementTypeData type;
+    private Integer type;
 
     @Column("measured_at")
     private LocalDateTime measuredAt;
 
     @Column("measurement_value")
-    private Number value;
+    private Double value;
 
 }

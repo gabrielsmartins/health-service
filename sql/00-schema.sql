@@ -20,7 +20,7 @@ CREATE TABLE tbl_measurement(measurement_id SERIAL NOT NULL,
                              measurement_person_id UUID NOT NULL,
                              measurement_type_id INT NOT NULL,
                              measured_at TIMESTAMP NOT NULL,
-                             measurement_value DECIMAL(5,5) NOT NULL,
+                             measurement_value NUMERIC(15,9) NOT NULL,
                              analyzed_at TIMESTAMP DEFAULT NULL,
                              measurement_classification CHAR(1) DEFAULT NULL,
                              CONSTRAINT PK_tbl_measurement

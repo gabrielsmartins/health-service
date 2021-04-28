@@ -14,7 +14,7 @@ public class MeasurementEntitySupport {
     public static MeasurementEntity.MeasurementEntityBuilder defaultMeasurementEntity(){
         return MeasurementEntity.builder()
                           .withMeasuredAt(LocalDateTime.now())
-                          .withType(MeasurementTypeData.HEART_RATE)
-                          .withValue(60);
+                          .withType(MeasurementTypeData.HEART_RATE.getCode())
+                          .withValue(60.00);
     }
 }

@@ -1,5 +1,6 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.mapper;
 
+import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.MeasurementTypeData;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,7 @@ public class MeasurementPersistenceMapperTest {
         assertThat(measurementEntity.getId()).isNull();
         assertThat(measurementEntity.getPersonId()).isEqualTo(measurement.getPerson().getId());
         assertThat(measurementEntity.getMeasuredAt()).isEqualTo(measurement.getMeasuredAt());
-        assertThat(measurementEntity.getType().getSource()).isEqualTo(measurement.getType());
+        assertThat(measurementEntity.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getCode());
         assertThat(measurementEntity.getValue()).isEqualTo(measurement.getValue());
     }
 
@@ -48,7 +49,7 @@ public class MeasurementPersistenceMapperTest {
         assertThat(measurement).hasNoNullFieldsOrPropertiesExcept("person");
         assertThat(measurement.getPerson()).isNull();
         assertThat(measurement.getMeasuredAt()).isEqualTo(measurementEntity.getMeasuredAt());
-        assertThat(measurement.getType()).isEqualTo(measurementEntity.getType().getSource());
+        assertThat(measurement.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getSource());
         assertThat(measurement.getValue()).isEqualTo(measurementEntity.getValue());
     }
 }

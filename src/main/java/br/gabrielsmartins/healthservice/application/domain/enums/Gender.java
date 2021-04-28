@@ -1,4 +1,4 @@
-package br.gabrielsmartins.healthservice.application.domain;
+package br.gabrielsmartins.healthservice.application.domain.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -8,7 +8,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class SaveMeasurementService implements ISaveMeasurementService{
+public class SaveMeasurementPersistenceService implements ISaveMeasurementPersistenceService {
 
     private final MeasurementRepository repository;
 

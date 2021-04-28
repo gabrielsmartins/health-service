@@ -1,6 +1,6 @@
-package br.gabrielsmartins.healthservice.adapters.persistence.entity;
+package br.gabrielsmartins.healthservice.adapters.persistence.entity.enums;
 
-import br.gabrielsmartins.healthservice.application.domain.Gender;
+import br.gabrielsmartins.healthservice.application.domain.enums.Gender;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

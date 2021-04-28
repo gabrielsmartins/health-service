@@ -1,6 +1,6 @@
-package br.gabrielsmartins.healthservice.adapters.persistence.entity;
+package br.gabrielsmartins.healthservice.adapters.persistence.entity.enums;
 
-import br.gabrielsmartins.healthservice.application.domain.MeasurementType;
+import br.gabrielsmartins.healthservice.application.domain.enums.MeasurementType;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

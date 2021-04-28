@@ -1,5 +1,6 @@
 package br.gabrielsmartins.healthservice.application.domain;
 
+import br.gabrielsmartins.healthservice.application.domain.enums.Gender;
 import lombok.*;
 
 import java.time.LocalDate;

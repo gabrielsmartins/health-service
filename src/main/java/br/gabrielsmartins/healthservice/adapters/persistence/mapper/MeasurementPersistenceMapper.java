@@ -2,8 +2,13 @@ package br.gabrielsmartins.healthservice.adapters.persistence.mapper;
 
 import br.gabrielsmartins.healthservice.adapters.persistence.entity.MeasurementEntity;
 import br.gabrielsmartins.healthservice.application.domain.Measurement;
+import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
+import org.modelmapper.spi.MappingContext;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @Component
 public class MeasurementPersistenceMapper {
@@ -15,6 +20,13 @@ public class MeasurementPersistenceMapper {
 
     public MeasurementEntity mapToEntity(Measurement measurement){
         var mapper = new ModelMapper();
+        mapper.addMappings(new PropertyMap<Measurement, MeasurementEntity>() {
+            @Override
+            protected void configure() {
+                using((Converter<UUID, UUID>) MappingContext::getSource)
+                        .map(source.getPerson().getId(), destination.getPersonId());
+            }
+        });
         return mapper.map(measurement, MeasurementEntity.class);
     }
 }

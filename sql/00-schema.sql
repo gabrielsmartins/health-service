@@ -1,10 +1,8 @@
-SET MODE PostgreSQL;
-
 DROP TABLE IF EXISTS tbl_measurement;
 DROP TABLE IF EXISTS tbl_measurement_type;
 DROP TABLE IF EXISTS tbl_person;
 
-CREATE TABLE tbl_person(person_id UUID NOT NULL DEFAULT random_uuid(),
+CREATE TABLE tbl_person(person_id UUID NOT NULL DEFAULT gen_random_uuid(),
                         person_first_name VARCHAR(256) NOT NULL,
                         person_last_name VARCHAR(256) NOT NULL,
                         person_dob DATE NOT NULL,

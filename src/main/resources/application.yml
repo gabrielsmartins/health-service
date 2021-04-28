@@ -33,3 +33,7 @@ topic:
     measurement-collected: measurement-collected
   output:
     measurement-analyzed: measurement-analyzed
+
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG

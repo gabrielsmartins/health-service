@@ -1,0 +1,6 @@
+spring:
+  r2dbc:
+    url: r2dbc:postgres://localhost:5432/healthdb
+    username: postgres
+    password: postgres
+    initialization-mode: never

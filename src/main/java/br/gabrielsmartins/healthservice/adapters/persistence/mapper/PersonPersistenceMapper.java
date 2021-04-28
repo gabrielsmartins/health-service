@@ -24,7 +24,7 @@ public class PersonPersistenceMapper {
 
     public PersonEntity mapToEntity(Person person){
         var mapper = new ModelMapper();
-        mapper.addMappings(new PropertyMap<PersonEntity, PersonEntity>() {
+        mapper.addMappings(new PropertyMap<Person, PersonEntity>() {
             @Override
             protected void configure() {
                 using((Converter<Gender, String>) context -> context.getSource().getPrefix().toString()).map(this.source.getGender(), this.destination.getGender());

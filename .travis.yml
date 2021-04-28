@@ -1,0 +1,32 @@
+language: java
+jdk: openjdk11
+install: true
+
+before_install:
+  - chmod +x gradlew
+
+stages:
+  - compile
+  - test
+  - build
+
+jobs:
+  include:
+    - stage: "compile"
+      name: " Compile"
+      script: ./gradlew compileTestJava
+    - stage: "test"
+      name: " Tests"
+      script: ./gradlew test
+    - stage: "build"
+      name: "Build"
+      script: ./gradlew assemble
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/

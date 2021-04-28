@@ -1,5 +1,8 @@
 # Microservice for Health Measurements using Hexagonal Architecture
 
+
+[![Build Status](https://travis-ci.com/gabrielsmartins/health-service.svg?branch=master)](https://travis-ci.com/gabrielsmartins/health-service)
+
 This Project is an Example Implementation of a Hexagonal Architecture using the following technologies:
 
 - JDK 11 

@@ -4,6 +4,12 @@ spring:
     username: sa
     password:
     initialization-mode: never
+  kafka:
+    bootstrap-servers: ${spring.embedded.kafka.brokers}
+    properties:
+      schema.registry.url: mock://http://localhost:8081
+    producer:
+      auto.register.schemas: true
 
 logging:
   level:

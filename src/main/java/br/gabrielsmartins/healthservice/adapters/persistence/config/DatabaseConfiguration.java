@@ -14,8 +14,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 import org.springframework.r2dbc.connection.R2dbcTransactionManager;
-import org.springframework.r2dbc.core.DatabaseClient;
-import org.springframework.r2dbc.core.binding.BindMarkersFactory;
 import org.springframework.transaction.ReactiveTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
@@ -63,18 +61,11 @@ public class DatabaseConfiguration extends AbstractR2dbcConfiguration {
         return converterList;
     }
 
-    @Bean
-    public DatabaseClient databaseClient(ConnectionFactory connectionFactory) {
-        return DatabaseClient.builder()
-                .connectionFactory(connectionFactory)
-                .bindMarkers(() -> BindMarkersFactory.named(":", "", 256).create())
-                .namedParameters(true)
-                .build();
-    }
 
     @Bean
     public ReactiveTransactionManager transactionManager(ConnectionFactory connectionFactory) {
         return new R2dbcTransactionManager(connectionFactory);
     }
+
 
 }

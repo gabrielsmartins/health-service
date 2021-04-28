@@ -3,3 +3,33 @@ spring:
     name: health-service
   main:
     allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    properties:
+      request.timeout.ms: 20000
+      retry.backoff.ms: 500
+      schema.registry.url: http://localhost:8081
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+    consumer:
+      group-id: ${spring.application.name}
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      schema.registry.url: ${spring.kafka.properties.schema.registry.url}
+      properties:
+        specific.avro.reader: true
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      schema.registry.url: ${spring.kafka.properties.schema.registry.url}
+      acks: all
+      properties:
+        enable.idempotence: true
+
+topic:
+  input:
+    measurement-collected: measurement-collected
+  output:
+    measurement-analyzed: measurement-analyzed

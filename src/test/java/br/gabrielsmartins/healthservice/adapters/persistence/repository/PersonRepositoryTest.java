@@ -35,4 +35,17 @@ public class PersonRepositoryTest {
                 .assertNext(p -> assertThat(p).isNotNull())
                 .verifyComplete();
     }
+
+    @Test
+    @DisplayName("Given Person Id When Exists Then Return Person")
+    public void givenPersonIdWhenExistsThenReturnPerson(){
+
+        var personEntity = defaultPersonEntity().build();
+        this.repository.save(personEntity).block();
+
+        this.repository.findById(personEntity.getId())
+                .as(StepVerifier::create)
+                .expectNextCount(1)
+                .verifyComplete();
+    }
 }

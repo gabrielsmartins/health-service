@@ -22,7 +22,7 @@ ext {
 	set('springCloudVersion', "2020.0.2")
 	set('modelMapperVersion', "2.4.1")
 	set('r2bcPostGreSQLVersion', "0.8.7.RELEASE")
-	set('h2Version', "1.4.200")
+	set('r2dbcH2Version', "0.8.2.RELEASE")
 	set('avroVersion', "1.10.1")
 	set('confluentVersion', "6.0.1")
 	set('awaitilityVersion', "4.0.3")
@@ -51,8 +51,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
-	testImplementation 'io.r2dbc:r2dbc-h2'
-	testImplementation group: 'com.h2database', name: 'h2', version: h2Version
+	testImplementation group: 'io.r2dbc', name: 'r2dbc-h2', version: r2dbcH2Version
 	testImplementation group: 'org.awaitility', name: 'awaitility', version: awaitilityVersion
 }
 

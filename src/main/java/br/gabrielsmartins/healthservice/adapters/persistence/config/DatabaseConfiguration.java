@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.r2dbc.R2dbcProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 import org.springframework.r2dbc.connection.R2dbcTransactionManager;
 import org.springframework.transaction.ReactiveTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -24,6 +25,7 @@ import java.util.List;
 @Configuration
 @RequiredArgsConstructor
 @EnableTransactionManagement
+@EnableR2dbcRepositories
 public class DatabaseConfiguration extends AbstractR2dbcConfiguration {
 
     private final R2dbcProperties properties;

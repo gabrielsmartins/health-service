@@ -30,6 +30,7 @@ public class PersonRepositoryTest {
         var personEntity = defaultPersonEntity()
                                                 .withId(null)
                                                 .build();
+
         this.repository.save(personEntity)
                 .as(StepVerifier::create)
                 .assertNext(p -> assertThat(p).isNotNull())
@@ -40,7 +41,10 @@ public class PersonRepositoryTest {
     @DisplayName("Given Person Id When Exists Then Return Person")
     public void givenPersonIdWhenExistsThenReturnPerson(){
 
-        var personEntity = defaultPersonEntity().build();
+        var personEntity = defaultPersonEntity()
+                                                .withId(null)
+                                                .build();
+
         this.repository.save(personEntity).block();
 
         this.repository.findById(personEntity.getId())

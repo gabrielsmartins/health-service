@@ -26,7 +26,7 @@ public class PersonPersistenceMapperTest {
 
         assertThat(personEntity).hasNoNullFieldsOrProperties();
         assertThat(personEntity.getId()).isEqualTo(person.getId());
-        assertThat(personEntity.getName()).isEqualTo(person.getName());
+        assertThat(personEntity.getFirstName()).isEqualTo(person.getFirstName());
         assertThat(personEntity.getLastName()).isEqualTo(person.getLastName());
         assertThat(personEntity.getGender().getSource()).isEqualTo(person.getGender());
         assertThat(personEntity.getDob()).isEqualTo(person.getDob());
@@ -42,7 +42,7 @@ public class PersonPersistenceMapperTest {
 
         assertThat(person).hasNoNullFieldsOrProperties();
         assertThat(person.getId()).isEqualTo(personEntity.getId());
-        assertThat(person.getName()).isEqualTo(personEntity.getName());
+        assertThat(person.getFirstName()).isEqualTo(personEntity.getFirstName());
         assertThat(person.getLastName()).isEqualTo(personEntity.getLastName());
         assertThat(person.getGender()).isEqualTo(personEntity.getGender().getSource());
         assertThat(person.getDob()).isEqualTo(personEntity.getDob());

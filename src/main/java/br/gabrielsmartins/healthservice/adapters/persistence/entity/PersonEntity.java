@@ -22,8 +22,8 @@ public class PersonEntity implements Serializable {
     @Column("person_id")
     private UUID id;
 
-    @Column("person_name")
-    private String name;
+    @Column("person_first_name")
+    private String firstName;
 
     @Column("person_last_name")
     private String lastName;

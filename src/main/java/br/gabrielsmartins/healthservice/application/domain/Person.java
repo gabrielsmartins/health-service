@@ -14,7 +14,7 @@ import java.util.UUID;
 public class Person {
 
     private UUID id;
-    private String name;
+    private String firstName;
     private String lastName;
     private LocalDate dob;
     private Gender gender;

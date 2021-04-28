@@ -15,7 +15,7 @@ public class PersonSupport {
     public static Person.PersonBuilder defaultPerson(){
         return Person.builder()
                      .withId(UUID.randomUUID())
-                     .withName("Foo")
+                     .withFirstName("Foo")
                      .withLastName("Bar")
                      .withGender(Gender.MALE)
                      .withDob(LocalDate.now());

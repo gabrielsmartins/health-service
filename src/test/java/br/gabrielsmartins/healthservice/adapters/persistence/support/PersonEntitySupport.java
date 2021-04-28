@@ -15,7 +15,7 @@ public class PersonEntitySupport {
     public static PersonEntity.PersonEntityBuilder defaultPersonEntity(){
         return PersonEntity.builder()
                      .withId(UUID.randomUUID())
-                     .withName("Foo")
+                     .withFirstName("Foo")
                      .withLastName("Bar")
                      .withGender(GenderData.MALE)
                      .withDob(LocalDate.now());

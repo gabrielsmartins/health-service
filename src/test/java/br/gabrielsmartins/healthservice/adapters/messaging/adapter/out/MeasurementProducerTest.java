@@ -61,14 +61,12 @@ public class MeasurementProducerTest {
 
         this.producer.notify(measurement);
 
-        producer.notify(measurement);
-
         Consumer<String, SpecificRecord> consumer = createConsumer();
 
         ConsumerRecord<String, SpecificRecord> singleRecord = KafkaTestUtils.getSingleRecord(consumer, topic);
 
         assertThat(singleRecord).isNotNull();
-        assertThat(singleRecord.key()).isEqualTo(measurement.getPerson().getId());
+        assertThat(singleRecord.key()).isEqualTo(measurement.getPerson().getId().toString());
         assertThat(singleRecord.value()).isNotNull();
     }
 

@@ -2,7 +2,7 @@ package br.gabrielsmartins.healthservice.adapters.messaging.adapter.in.mapper;
 
 import br.gabrielsmartins.healthservice.application.domain.Measurement;
 import br.gabrielsmartins.healthservice.application.domain.Person;
-import br.gabrielsmartins.schemas.measurement_received.MeasurementReceived;
+import br.gabrielsmartins.schemas.measurement_collected.MeasurementCollected;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -13,9 +13,9 @@ import java.util.UUID;
 @Component
 public class MeasurementConsumerMapper {
 
-    public Measurement mapToDomain(MeasurementReceived message){
+    public Measurement mapToDomain(MeasurementCollected message){
         var mapper = new ModelMapper();
-        mapper.addMappings(new PropertyMap<MeasurementReceived, Measurement>() {
+        mapper.addMappings(new PropertyMap<MeasurementCollected, Measurement>() {
             @Override
             protected void configure() {
               using((Converter<String, Person>) context -> {

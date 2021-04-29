@@ -1,6 +1,7 @@
 package br.gabrielsmartins.healthservice.adapters.persistence.support;
 
 import br.gabrielsmartins.healthservice.adapters.persistence.entity.MeasurementEntity;
+import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.MeasurementClassificationData;
 import br.gabrielsmartins.healthservice.adapters.persistence.entity.enums.MeasurementTypeData;
 
 import java.time.LocalDateTime;
@@ -15,6 +16,8 @@ public class MeasurementEntitySupport {
         return MeasurementEntity.builder()
                           .withMeasuredAt(LocalDateTime.now())
                           .withType(MeasurementTypeData.HEART_RATE.getCode())
-                          .withValue(60.00);
+                          .withValue(60.00)
+                          .withAnalyzedAt(LocalDateTime.now())
+                          .withClassification(MeasurementClassificationData.NORMAL.getPrefix().toString());
     }
 }

@@ -25,7 +25,7 @@ public class MeasurementConsumerMapperTest {
 
         var measurement = this.mapper.mapToDomain(message);
 
-        assertThat(measurement).hasNoNullFieldsOrProperties();
+        assertThat(measurement).hasNoNullFieldsOrPropertiesExcept("analyzedAt", "classification");
         assertThat(measurement.getPerson().getId().toString()).isEqualTo(message.getPersonId());
         assertThat(measurement.getMeasuredAt()).isEqualTo(message.getMeasuredAt());
         assertThat(measurement.getType()).isEqualTo(MeasurementType.valueOf(message.getMeasurementType().name()));

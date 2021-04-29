@@ -1,0 +1,34 @@
+{
+  "type":"record",
+  "name":"MeasurementCollected",
+  "namespace":"br.gabrielsmartins.schemas.measurement_collected",
+  "fields":[
+    {
+      "name":"person_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    { "name": "measurement_type",
+        "type": {
+            "type": "enum",
+            "name": "MeasurementType",
+            "symbols": ["HEART_RATE", "OXYGEN_SATURATION", "BLOOD_GLUCOSE", "BLOOD_PRESSURE", "TEMPERATURE"]
+        }
+    },
+    {
+      "name":"measured_at",
+      "type": {
+        "type": "long",
+        "logicalType": "local-timestamp-millis"
+      }
+    },
+    {
+      "name":"value",
+      "type": {
+        "type": "double"
+      }
+    }
+  ]
+}

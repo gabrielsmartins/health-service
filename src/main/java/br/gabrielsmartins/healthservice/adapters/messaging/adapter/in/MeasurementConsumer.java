@@ -3,7 +3,7 @@ package br.gabrielsmartins.healthservice.adapters.messaging.adapter.in;
 import br.gabrielsmartins.healthservice.adapters.messaging.adapter.in.mapper.MeasurementConsumerMapper;
 import br.gabrielsmartins.healthservice.application.ports.in.SaveMeasurementUseCase;
 import br.gabrielsmartins.healthservice.common.MessagingAdapter;
-import br.gabrielsmartins.schemas.measurement_received.MeasurementReceived;
+import br.gabrielsmartins.schemas.measurement_collected.MeasurementCollected;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaHandler;
@@ -23,7 +23,7 @@ public class MeasurementConsumer {
     private final MeasurementConsumerMapper mapper;
 
     @KafkaHandler
-    public void consume(@Headers MessageHeaders headers, @Payload MeasurementReceived message,  Acknowledgment acknowledgment){
+    public void consume(@Headers MessageHeaders headers, @Payload MeasurementCollected message, Acknowledgment acknowledgment){
         try{
             log.info("Receiving measurement: {},{}", headers, message);
             var measurement = this.mapper.mapToDomain(message);

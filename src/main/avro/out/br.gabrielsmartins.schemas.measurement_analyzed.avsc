@@ -1,7 +1,7 @@
 {
   "type":"record",
-  "name":"MeasurementReceived",
-  "namespace":"br.gabrielsmartins.schemas.measurement_received",
+  "name":"MeasurementAnalyzed",
+  "namespace":"br.gabrielsmartins.schemas.measurement_analyzed",
   "fields":[
     {
       "name":"person_id",
@@ -28,6 +28,20 @@
       "name":"value",
       "type": {
         "type": "double"
+      }
+    },
+    {
+      "name":"analyzed_at",
+      "type": {
+        "type": "long",
+        "logicalType": "local-timestamp-millis"
+      }
+    },
+    { "name": "measurement_classification",
+      "type": {
+        "type": "enum",
+        "name": "MeasurementClassification",
+        "symbols": ["NORMAL", "HIGH", "LOW"]
       }
     }
   ]

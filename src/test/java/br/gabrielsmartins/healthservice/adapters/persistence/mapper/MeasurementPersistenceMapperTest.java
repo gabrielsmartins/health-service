@@ -36,6 +36,8 @@ public class MeasurementPersistenceMapperTest {
         assertThat(measurementEntity.getMeasuredAt()).isEqualTo(measurement.getMeasuredAt());
         assertThat(measurementEntity.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getCode());
         assertThat(measurementEntity.getValue()).isEqualTo(measurement.getValue());
+        assertThat(measurementEntity.getAnalyzedAt()).isEqualTo(measurement.getAnalyzedAt());
+        assertThat(measurementEntity.getClassification()).isEqualTo(measurement.getClassification().getPrefix().toString());
     }
 
     @Test
@@ -51,5 +53,7 @@ public class MeasurementPersistenceMapperTest {
         assertThat(measurement.getMeasuredAt()).isEqualTo(measurementEntity.getMeasuredAt());
         assertThat(measurement.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getSource());
         assertThat(measurement.getValue()).isEqualTo(measurementEntity.getValue());
+        assertThat(measurement.getAnalyzedAt()).isEqualTo(measurementEntity.getAnalyzedAt());
+        assertThat(measurement.getClassification().getPrefix().toString()).isEqualTo(measurementEntity.getClassification());
     }
 }

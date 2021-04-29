@@ -35,4 +35,10 @@ public class MeasurementEntity implements Serializable {
     @Column("measurement_value")
     private Double value;
 
+    @Column("analyzed_at")
+    private LocalDateTime analyzedAt;
+
+    @Column("measurement_classification")
+    private String classification;
+
 }

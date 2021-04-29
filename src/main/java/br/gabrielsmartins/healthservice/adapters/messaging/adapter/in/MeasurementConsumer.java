@@ -1,7 +1,7 @@
 package br.gabrielsmartins.healthservice.adapters.messaging.adapter.in;
 
 import br.gabrielsmartins.healthservice.adapters.messaging.adapter.in.mapper.MeasurementConsumerMapper;
-import br.gabrielsmartins.healthservice.application.ports.in.SaveMeasurementUseCase;
+import br.gabrielsmartins.healthservice.application.ports.in.ProcessMeasurementUseCase;
 import br.gabrielsmartins.healthservice.common.MessagingAdapter;
 import br.gabrielsmartins.schemas.measurement_collected.MeasurementCollected;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.messaging.handler.annotation.Payload;
 @KafkaListener(topics = {"${topic.input.measurement-collected}"})
 public class MeasurementConsumer {
 
-    private final SaveMeasurementUseCase useCase;
+    private final ProcessMeasurementUseCase useCase;
     private final MeasurementConsumerMapper mapper;
 
     @KafkaHandler
@@ -27,7 +27,7 @@ public class MeasurementConsumer {
         try{
             log.info("Receiving measurement: {},{}", headers, message);
             var measurement = this.mapper.mapToDomain(message);
-            this.useCase.save(measurement);
+            this.useCase.process(measurement);
             log.info("Measurement stored successfully");
         }catch (Exception e){
             log.error("Error consuming message", e);

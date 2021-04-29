@@ -3,7 +3,7 @@ package br.gabrielsmartins.healthservice.adapters.messaging.adapter.in;
 import br.gabrielsmartins.healthservice.adapters.messaging.adapter.in.mapper.MeasurementConsumerMapper;
 import br.gabrielsmartins.healthservice.adapters.messaging.config.TopicProperties;
 import br.gabrielsmartins.healthservice.application.domain.Measurement;
-import br.gabrielsmartins.healthservice.application.ports.in.SaveMeasurementUseCase;
+import br.gabrielsmartins.healthservice.application.ports.in.ProcessMeasurementUseCase;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import io.confluent.kafka.serializers.KafkaAvroSerializerConfig;
 import org.apache.avro.specific.SpecificRecord;
@@ -52,7 +52,7 @@ public class MeasurementConsumerTest {
     private MeasurementConsumer consumer;
 
     @MockBean
-    private SaveMeasurementUseCase useCase;
+    private ProcessMeasurementUseCase useCase;
 
     @SpyBean
     private MeasurementConsumerMapper mapper;
@@ -83,7 +83,7 @@ public class MeasurementConsumerTest {
         producer.close();
 
         waitAtMost(20, TimeUnit.SECONDS).untilAsserted(() -> {
-            verify(useCase, times(1)).save(any(Measurement.class));
+            verify(useCase, times(1)).process(any(Measurement.class));
         });
     }
 

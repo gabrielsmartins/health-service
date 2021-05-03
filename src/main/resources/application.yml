@@ -8,6 +8,7 @@ spring:
     properties:
       request.timeout.ms: 20000
       retry.backoff.ms: 500
+      value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
       schema.registry.url: http://localhost:8081
     listener:
       ack-mode: MANUAL_IMMEDIATE
@@ -25,6 +26,7 @@ spring:
       value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       schema.registry.url: ${spring.kafka.properties.schema.registry.url}
       acks: all
+      auto.register.schemas: true
       properties:
         enable.idempotence: true
 

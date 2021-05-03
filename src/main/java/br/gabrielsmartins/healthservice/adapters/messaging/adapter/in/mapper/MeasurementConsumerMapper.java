@@ -24,6 +24,7 @@ public class MeasurementConsumerMapper {
                   person.setId(id);
                   return person;
               }).map(this.source.getPersonId(), this.destination.getPerson());
+              skip(this.destination.getId());
             }
         });
         return mapper.map(message, Measurement.class);

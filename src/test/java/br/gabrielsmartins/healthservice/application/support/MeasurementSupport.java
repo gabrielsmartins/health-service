@@ -14,6 +14,7 @@ public class MeasurementSupport {
 
     public static Measurement.MeasurementBuilder defaultMeasurement(){
         return Measurement.builder()
+                          .withId(1L)
                           .withMeasuredAt(LocalDateTime.now())
                           .withType(MeasurementType.HEART_RATE)
                           .withValue(60.00)

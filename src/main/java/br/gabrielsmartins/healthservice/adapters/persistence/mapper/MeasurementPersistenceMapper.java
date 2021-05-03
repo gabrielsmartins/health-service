@@ -41,7 +41,7 @@ public class MeasurementPersistenceMapper {
                 using((Converter<MeasurementType, Integer>) context -> MeasurementTypeData.fromSource(context.getSource()).getCode())
                         .map(this.source.getType(), this.destination.getType());
 
-                using((Converter<MeasurementClassification, String>) context -> MeasurementClassificationData.fromSource(context.getSource()).getPrefix().toString())
+                using((Converter<MeasurementClassification, String>) context -> context.getSource() == null ? null : MeasurementClassificationData.fromSource(context.getSource()).getPrefix().toString())
                         .map(this.source.getClassification(), this.destination.getClassification());
             }
         });

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Builder(setterPrefix = "with")
 public class Measurement {
 
+    private Long id;
     private Person person;
     private MeasurementType type;
     private LocalDateTime measuredAt;

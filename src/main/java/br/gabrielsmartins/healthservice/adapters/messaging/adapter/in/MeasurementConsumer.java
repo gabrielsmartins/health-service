@@ -27,7 +27,7 @@ public class MeasurementConsumer {
         try{
             log.info("Receiving measurement: {},{}", headers, message);
             var measurement = this.mapper.mapToDomain(message);
-            this.useCase.process(measurement);
+            this.useCase.process(measurement).subscribe();
             log.info("Measurement stored successfully");
         }catch (Exception e){
             log.error("Error consuming message", e);

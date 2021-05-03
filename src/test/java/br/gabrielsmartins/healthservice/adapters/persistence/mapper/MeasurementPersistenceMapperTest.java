@@ -31,7 +31,7 @@ public class MeasurementPersistenceMapperTest {
         var measurementEntity = this.mapper.mapToEntity(measurement);
 
         assertThat(measurementEntity).hasNoNullFieldsOrPropertiesExcept("id");
-        assertThat(measurementEntity.getId()).isNull();
+        assertThat(measurementEntity.getId()).isEqualTo(measurement.getId());
         assertThat(measurementEntity.getPersonId()).isEqualTo(measurement.getPerson().getId());
         assertThat(measurementEntity.getMeasuredAt()).isEqualTo(measurement.getMeasuredAt());
         assertThat(measurementEntity.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getCode());
@@ -50,6 +50,7 @@ public class MeasurementPersistenceMapperTest {
 
         assertThat(measurement).hasNoNullFieldsOrPropertiesExcept("person");
         assertThat(measurement.getPerson()).isNull();
+        assertThat(measurement.getId()).isEqualTo(measurementEntity.getId());
         assertThat(measurement.getMeasuredAt()).isEqualTo(measurementEntity.getMeasuredAt());
         assertThat(measurement.getType()).isEqualTo(MeasurementTypeData.fromSource(measurement.getType()).getSource());
         assertThat(measurement.getValue()).isEqualTo(measurementEntity.getValue());

@@ -37,8 +37,9 @@ public class MeasurementConsumer {
     }
 
    @KafkaHandler(isDefault = true)
-    public void consume(Object object){
+    public void consume(Object object, Acknowledgment acknowledgment){
         log.warn("Unrecognized message: {}", object);
+        acknowledgment.acknowledge();
     }
 
 
